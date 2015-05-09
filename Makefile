@@ -1,0 +1,13 @@
+all:
+	@echo "make composer"
+	@echo "make deps"
+	@echo "make server"
+
+composer:
+	php -r "readfile('https://getcomposer.org/installer');" | php
+
+deps:
+	php composer.phar install
+
+server:
+	php artisan serve
