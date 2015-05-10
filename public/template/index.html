@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" ng-app='denseApp'>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<base href="/">
 <title>Dense</title>
 <link rel="stylesheet" href="asset/vendor/foundation/css/normalize.css" />
 <link rel="stylesheet" href="asset/vendor/foundation/css/foundation.min.css" />
@@ -22,7 +23,7 @@
         </ul>
         <section class="top-bar-section">
             <ul class="left">
-                <li><a href="{{ route('home.index') }}">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#">Sign in</a></li>
                 <li><a href="#">Sign up</a></li>
             </ul>
@@ -45,11 +46,16 @@
 <div class="row">
     <div class="large-12 columns">
         <br>
+        <ng-view />
     </div>
 </div>
 <script src="asset/vendor/foundation/js/vendor/jquery.js"></script>
+<script src="asset/vendor/angular/angular.min.js"></script>
+<script src="asset/vendor/angular/angular-route.min.js"></script>
 <script src="asset/vendor/foundation/js/foundation.min.js"></script>
 <script src="asset/vendor/foundation/js/foundation/foundation.topbar.js"></script>
 <script src="asset/client/js/application.js"></script>
+<script src="asset/client/js/routes.js"></script>
+<script src="asset/client/js/controllers.js"></script>
 </body>
 </html>
