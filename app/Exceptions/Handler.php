@@ -36,7 +36,14 @@ class Handler extends ExceptionHandler {
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        switch($e->getStatusCode()) {
+            case '404':
+                include("template/index.html");
+                break;
+            default:
+                return parent::render($request, $e);
+                break;
+        }
     }
 
 }
