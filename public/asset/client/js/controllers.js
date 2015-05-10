@@ -16,4 +16,4 @@ denseApp.controller(
 
         }
     ]
-)
+);
