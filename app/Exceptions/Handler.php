@@ -38,7 +38,8 @@ class Handler extends ExceptionHandler {
     {
         switch($e->getStatusCode()) {
             case '404':
-                include("template/index.html");
+                $controller = app()->make('App\Http\Controllers\HomeController');
+                $controller->index();
                 break;
             default:
                 return parent::render($request, $e);
