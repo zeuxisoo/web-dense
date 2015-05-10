@@ -6,6 +6,10 @@ denseApp.config([
                 templateUrl: 'template/partial/home.html',
                 controller : 'HomeController',
             })
+            .when('/signin', {
+                templateUrl: 'template/partial/signin.html',
+                controller : 'SignInController',
+            })
             .otherwise({
                 redirectTo : '/'
             });
