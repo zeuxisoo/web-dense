@@ -28,6 +28,10 @@
 }
 
 /* Site */
+body {
+    background: url(../img/background.png);
+}
+
 .topic .avatar {
     border: 1px solid white;
 }
