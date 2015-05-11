@@ -17,3 +17,13 @@ denseApp.controller(
         }
     ]
 );
+
+denseApp.controller(
+    'SignUpController',
+    [
+        'app', '$scope',
+        function(app, $scope) {
+
+        }
+    ]
+)
