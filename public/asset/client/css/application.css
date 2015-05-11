@@ -1,3 +1,33 @@
+/* Overwrite foundcation */
+.contain-to-grid.blue {
+    background: #0E90D3;
+}
+
+.contain-to-grid.blue .top-bar.blue-bar {
+    background: #0E90D3;
+}
+
+.contain-to-grid.blue .top-bar.blue-bar .top-bar-section ul li {
+    background: #0E90D3;
+}
+
+.contain-to-grid.blue .top-bar.blue-bar .top-bar-section li:not(.has-form) a:not(.button) {
+    background: #0E90D3;
+}
+
+.contain-to-grid.blue .top-bar.blue-bar .title-area {
+    background: #0E90D3;
+}
+
+.contain-to-grid.blue .top-bar.blue-bar .toggle-topbar a {
+    color: white;
+}
+
+.contain-to-grid.blue .top-bar.blue-bar .toggle-topbar a span::after {
+    box-shadow:0 0 0 1px #DDD,0 7px 0 1px #DDD,0 14px 0 1px #DDD
+}
+
+/* Site */
 .topic .avatar {
     border: 1px solid white;
 }
