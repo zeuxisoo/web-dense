@@ -1,0 +1,12 @@
+.topic .avatar {
+    border: 1px solid white;
+}
+
+.topic .subject {
+    font-weight: bold;
+}
+
+.topic .status {
+    font-size: 12px;
+    color: #555555;
+}
