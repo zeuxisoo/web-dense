@@ -14,6 +14,10 @@ denseApp.config([
                 templateUrl: 'template/partial/signup.html',
                 controller : 'SignUpController',
             })
+            .when('/topic/:id', {
+                templateUrl: 'template/partial/topic.html',
+                controller : 'TopicController',
+            })
             .otherwise({
                 redirectTo : '/'
             });

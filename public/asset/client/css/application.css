@@ -44,3 +44,58 @@ body {
     font-size: 12px;
     color: #555555;
 }
+
+.comment .block {
+    padding: 0px;
+}
+
+/* left arrow */
+@media only screen and (min-width: 40.063em) {
+    .comment .block:before,
+    .comment .block:after {
+        position: absolute;
+        top: 10px;
+        left: 8px;
+        right: 100%;
+        width: 0;
+        height: 0;
+        display: block;
+        content: " ";
+        border-color: transparent;
+        border-style: solid solid outset;
+        border-width: 8px 8px 8px 0;
+        pointer-events: none;
+    }
+
+
+    .comment .block:before {
+        border-right-color: #d8d8d8;
+        z-index: 1;
+    }
+
+    .comment .block:after {
+      border-right-color: #f2f2f2;
+      margin-left: 1px;
+      z-index: 2;
+    }
+}
+
+.comment .block-head {
+    padding: 10px 15px;
+    border-bottom: 1px solid #d8d8d8;
+    font-size: 13px;
+}
+
+.comment .block-head .username {
+    font-weight: bold;
+}
+
+.comment .block-head .post-at,
+.comment .block-head .time {
+    color: #999999;
+}
+
+.comment .block-body {
+    padding: 15px;
+    background: white;
+}

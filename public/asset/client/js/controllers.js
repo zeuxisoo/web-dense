@@ -26,4 +26,14 @@ denseApp.controller(
 
         }
     ]
-)
+);
+
+denseApp.controller(
+    'TopicController',
+    [
+        'app', '$scope',
+        function(app, $scope) {
+
+        }
+    ]
+);
