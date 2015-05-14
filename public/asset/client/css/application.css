@@ -27,6 +27,11 @@
     box-shadow:0 0 0 1px #DDD,0 7px 0 1px #DDD,0 14px 0 1px #DDD
 }
 
+/* Helper class */
+.reset-button-margin {
+    margin-bottom: 0px;
+}
+
 /* Site */
 body {
     background: url(../img/background.png);
@@ -47,6 +52,7 @@ body {
 
 .comment .block {
     padding: 0px;
+    margin-bottom: 0px;
 }
 
 /* left arrow */
