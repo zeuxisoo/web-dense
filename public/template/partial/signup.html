@@ -30,7 +30,7 @@
             <div class="large-12 columns">
                 <label>
                     Confirm Password
-                    <input type="password" name="confirm_password" placeholder="Confirm Password" ng-model="user.confirm_password" ui-validate="{repasswd:'$value==user.password'}" ui-validate-watch="'user.password'" dense-tooltip="validateTooltip" error-required="Please enter confirm password" error-repasswd="Password not match" required />
+                    <input type="password" name="password_confirmation" placeholder="Confirm Password" ng-model="user.password_confirmation" ui-validate="{repasswd:'$value==user.password'}" ui-validate-watch="'user.password'" dense-tooltip="validateTooltip" error-required="Please enter confirm password" error-repasswd="Password not match" required />
                 </label>
             </div>
         </div>

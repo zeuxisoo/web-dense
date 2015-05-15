@@ -24,10 +24,10 @@ denseApp.controller(
         'app', '$scope',
         function(app, $scope) {
             $scope.user = {
-                username        : '',
-                email           : '',
-                password        : '',
-                confirm_password: ''
+                username              : '',
+                email                 : '',
+                password              : '',
+                password_confirmation : ''
             };
 
             $scope.checkName = function (scope, model) {
@@ -49,16 +49,12 @@ denseApp.controller(
                     app.restAPI.user.save({
                         action: 'signup'
                     }, {
-                        username        : user.username,
-                        email           : user.email,
-                        password        : user.password,
-                        confirm_password: user.confirm_password
+                        username              : user.username,
+                        email                 : user.email,
+                        password              : user.password,
+                        password_confirmation : user.password_confirmation
                     }, function (data) {
                         console.log(data);
-                        // app.rootScope.global.user = data.data;
-                        // app.checkUser();
-                        // $scope.$destroy();
-                        // app.location.path('/home');
                     })
                 }
             }
