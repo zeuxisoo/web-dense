@@ -12,3 +12,7 @@
 */
 
 $app->get('/', ['as' => 'home.index', 'uses' => 'App\Http\Controllers\HomeController@index']);
+
+$app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers\Api'], function($app) {
+    $app->post('/user/signup', ['as' => 'api.user.signup', 'uses' => 'UserController@signup']);
+});

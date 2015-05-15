@@ -1,5 +1,6 @@
 var denseApp = angular.module('denseApp', [
     'ngRoute',
+    'ngResource',
     'ui.validate'
 ]);
 
@@ -15,10 +16,12 @@ denseApp.config([
 ]);
 
 denseApp.run([
-    'app', '$filter', '$rootScope',
-    function(app, $filter, $rootScope) {
-        app.filter = $filter;
+    'app', 'restAPI', '$filter', '$rootScope',
+    function(app, restAPI, $filter, $rootScope) {
+        app.restAPI = restAPI;
+        app.filter  = $filter;
 
+        // Add more utils to app object like app.each
         angular.extend(app, JSONKit);
 
         app.validate = function (scope) {

@@ -46,7 +46,20 @@ denseApp.controller(
                 var user = $scope.user;
 
                 if (app.validate($scope)) {
-
+                    app.restAPI.user.save({
+                        action: 'signup'
+                    }, {
+                        username        : user.username,
+                        email           : user.email,
+                        password        : user.password,
+                        confirm_password: user.confirm_password
+                    }, function (data) {
+                        console.log(data);
+                        // app.rootScope.global.user = data.data;
+                        // app.checkUser();
+                        // $scope.$destroy();
+                        // app.location.path('/home');
+                    })
                 }
             }
         }
