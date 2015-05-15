@@ -6,7 +6,7 @@
             <div class="large-12 columns">
                 <label>
                     Username
-                    <input type="text" placeholder="Username" />
+                    <input type="text" name="username" placeholder="Username" ng-model="user.username" ui-validate="{username:checkName,minname:checkMin,maxname:checkMax}" dense-tooltip="validateTooltip" error-username="Please enter username" error-minname="Username length must more than 6 char" error-maxname="Username length must less than 18 char" />
                 </label>
             </div>
         </div>
@@ -14,7 +14,7 @@
             <div class="large-12 columns">
                 <label>
                     Email
-                    <input type="text" placeholder="Email" />
+                    <input type="text" name="email" placeholder="Email" ng-model="user.email" dense-tooltip="validateTooltip" error-required="Please enter email address" required />
                 </label>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="large-12 columns">
                 <label>
                     Password
-                    <input type="text" placeholder="Password" />
+                    <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-minlength="8" ng-maxlength="30" dense-tooltip="validateTooltip" error-required="Please enter password" error-minlength="Password must more than 8 char" error-maxlength="Password must less than 30 char" required />
                 </label>
             </div>
         </div>
@@ -30,13 +30,13 @@
             <div class="large-12 columns">
                 <label>
                     Confirm Password
-                    <input type="text" placeholder="Confirm Password" />
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" ng-model="user.confirm_password" ui-validate="{repasswd:'$value==user.password'}" ui-validate-watch="'user.password'" dense-tooltip="validateTooltip" error-required="Please enter confirm password" error-repasswd="Password not match" required />
                 </label>
             </div>
         </div>
         <div class="row">
             <div class="large-12 columns">
-                <a href="#" class="button tiny">Submit</a>
+                <a href="#" class="button tiny" ng-click="submit()">Submit</a>
             </div>
         </div>
     </form>
