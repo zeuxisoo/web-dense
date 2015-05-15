@@ -42,16 +42,7 @@ class Handler extends ExceptionHandler {
             $controller->index();
             exit;
         }else{
-            // return parent::render($request, $e);
-
-            $whoops = new \Whoops\Run;
-            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
-
-            return new \Illuminate\Http\Response(
-                $whoops->handleException($e),
-                $e->getStatusCode(),
-                $e->getHeaders()
-            );
+            return parent::render($request, $e);
         }
     }
 
