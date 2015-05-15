@@ -9,8 +9,7 @@ use App\Models\User;
 class UserController extends Controller {
 
     public function signup(Request $request) {
-        $form_data = $request->all();
-        $validator = Validator::make($form_data, [
+        $validator = Validator::make($request->all(), [
             'username'              => 'required|alpha_dash|min:6|max:30|unique:users',
             'email'                 => 'required|email|unique:users',
             'password'              => 'required|min:8|confirmed',
@@ -20,7 +19,7 @@ class UserController extends Controller {
         if ($validator->fails()) {
             return response()->json($validator->errors());
         }else{
-            $user = User::create($form_data);
+            $user = User::create($request->only('username', 'email', 'password'));
 
             return response()->json($user);
         }
