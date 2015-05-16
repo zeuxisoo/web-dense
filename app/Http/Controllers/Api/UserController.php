@@ -3,10 +3,9 @@ namespace App\Http\Controllers\Api;
 
 use Validator;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\User;
 
-class UserController extends Controller {
+class UserController extends APIController {
 
     public function signup(Request $request) {
         $validator = Validator::make($request->all(), [
