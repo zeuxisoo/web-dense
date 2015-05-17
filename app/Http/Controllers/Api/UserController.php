@@ -18,12 +18,14 @@ class UserController extends APIController {
         ]);
 
         if ($validator->fails()) {
-            return app('fractal')->item($validator->errors(), new ValidationErrorTransformer);
+            $response = $this->fractal->item($validator->errors(), new ValidationErrorTransformer);
+            $response = $this->withError($response);
         }else{
-            $user = User::create($request->only('username', 'email', 'password'));
-
-            return app('fractal')->item($user, new UserTransformer);
+            $user     = User::create($request->only('username', 'email', 'password'));
+            $response = $this->fractal->item($user, new UserTransformer);
         }
+
+        return $response;
     }
 
 }
