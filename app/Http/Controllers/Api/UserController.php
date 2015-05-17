@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Transformers\ValidationErrorTransformer;
+use App\Transformers\UserTransformer;
 
 class UserController extends APIController {
 
@@ -16,11 +18,11 @@ class UserController extends APIController {
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors());
+            return app('fractal')->item($validator->errors(), new ValidationErrorTransformer);
         }else{
             $user = User::create($request->only('username', 'email', 'password'));
 
-            return response()->json($user);
+            return app('fractal')->item($user, new UserTransformer);
         }
     }
 
