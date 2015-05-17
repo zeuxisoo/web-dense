@@ -78,7 +78,7 @@ $app->middleware([
 |
 */
 
-// $app->register('App\Providers\AppServiceProvider');
+$app->register('App\Providers\FractalServiceProvider');
 
 /*
 |--------------------------------------------------------------------------
