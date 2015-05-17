@@ -53,9 +53,19 @@ denseApp.controller(
                         email                 : user.email,
                         password              : user.password,
                         password_confirmation : user.password_confirmation
-                    }, function (data) {
-                        console.log(data);
-                    })
+                    }, function(http) {
+                        var user = http.data;
+
+                        app.rootScope.global.user = user;
+                        app.checkUser();
+                        $scope.$destroy();
+                        app.location.path('/');
+                    }, function(http) {
+                        var response = http.data,
+                            message  = response.data.message;
+
+                        app.toast.error(message);
+                    });
                 }
             }
         }

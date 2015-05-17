@@ -16,13 +16,26 @@ denseApp.config([
 ]);
 
 denseApp.run([
-    'app', 'restAPI', '$filter', '$rootScope',
-    function(app, restAPI, $filter, $rootScope) {
-        app.restAPI = restAPI;
-        app.filter  = $filter;
+    'app', 'restAPI', 'toast', '$filter', '$rootScope', '$location',
+    function(app, restAPI, toast, $filter, $rootScope, $location) {
+        app.restAPI   = restAPI;
+        app.toast     = toast;
+        app.filter    = $filter;
+        app.rootScope = $rootScope;
+        app.location  = $location;
 
         // Add more utils to app object like app.each
         angular.extend(app, JSONKit);
+
+        // Define global variable
+        var global = $rootScope.global = {
+            isSignIn: false
+        };
+
+        // Method
+        app.checkUser = function () {
+            global.isSignIn = !! global.user;
+        };
 
         app.validate = function (scope) {
             var collect = [],
