@@ -13,7 +13,35 @@ denseApp.controller(
     [
         'app', '$scope',
         function(app, $scope) {
+            $scope.user = {
+                account  : '',
+                password : ''
+            };
 
+            $scope.submit = function() {
+                var user = $scope.user;
+
+                if (app.validate($scope)) {
+                    app.restAPI.user.save({
+                        action: 'signin'
+                    }, {
+                        account  : user.account,
+                        password : user.password,
+                    }, function(http) {
+                        var user = http.data;
+
+                        app.rootScope.global.user = user;
+                        app.checkUser();
+                        $scope.$destroy();
+                        app.location.path('/');
+                    }, function(http) {
+                        var response = http.data,
+                            message  = response.data.message;
+
+                        app.toast.error(message);
+                    });
+                }
+            }
         }
     ]
 );
