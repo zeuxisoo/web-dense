@@ -1,58 +1,18 @@
-<div class="panel callout radius">
+<div class="panel callout radius" ng-repeat="topic in topics">
     <div class="row topic">
         <div class="small-1 large-1 columns">
-            <img src="http://placehold.it/48x48/59D/FFF&text=A" class="avatar" />
+            <img src="{{ topic.user.data.avatar }}" class="avatar" />
         </div>
         <div class="small-11 large-11 columns">
             <h5 class="subject">
-                <a href="/topic/show/1">Somthing like that</a>
+                <a href="/topic/show/{{ topic.id }}">{{ topic.subject }}</a>
             </h5>
             <div class="status">
-                <i class="fa fa-university"></i> Open
+                <i class="fa fa-university"></i> {{ topic.status }}
                 &nbsp;
-                <i class="fa fa-user"></i> Nobody
+                <i class="fa fa-user"></i> {{ topic.user.data.username }}
                 &nbsp;
-                <i class="fa fa-clock-o"></i> 12 hours ago
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="panel callout radius">
-    <div class="row topic">
-        <div class="small-1 large-1 columns">
-            <img src="http://placehold.it/48x48/59D/FFF&text=A" class="avatar" />
-        </div>
-        <div class="small-11 large-11 columns">
-            <h5 class="subject">
-                <a href="/topic/show/1">Somthing like that</a>
-            </h5>
-            <div class="status">
-                <i class="fa fa-university"></i> Open
-                &nbsp;
-                <i class="fa fa-user"></i> Nobody
-                &nbsp;
-                <i class="fa fa-clock-o"></i> 12 hours ago
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="panel callout radius">
-    <div class="row topic">
-        <div class="small-1 large-1 columns">
-            <img src="http://placehold.it/48x48/59D/FFF&text=A" class="avatar" />
-        </div>
-        <div class="small-11 large-11 columns">
-            <h5 class="subject">
-                <a href="/topic/show/1">Somthing like that</a>
-            </h5>
-            <div class="status">
-                <i class="fa fa-university"></i> Open
-                &nbsp;
-                <i class="fa fa-user"></i> Nobody
-                &nbsp;
-                <i class="fa fa-clock-o"></i> 12 hours ago
+                <i class="fa fa-clock-o"></i> {{ topic.created_at }}
             </div>
         </div>
     </div>

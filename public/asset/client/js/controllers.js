@@ -3,7 +3,22 @@ denseApp.controller(
     [
         'app', '$scope',
         function(app, $scope) {
+            $scope.topics = [];
 
+            app.restAPI.topic.get({
+                'action': 'latest'
+            }, function(http) {
+                $scope.topics = http.data;
+            }, function(http) {
+                var response = http.data,
+                    message  = response.data.message;
+
+                if (message == null) {
+                    message = "Unknown error";
+                }
+
+                app.toast.error(message);
+            })
         }
     ]
 );
