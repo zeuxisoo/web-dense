@@ -46,4 +46,43 @@ class UserController extends APIController {
         return $response;
     }
 
+    public function signin(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'account'  => 'required',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response = $this->fractal->item($validator->errors(), new ValidationErrorTransformer);
+            $response = $this->withError($response);
+        }else{
+            $account = $request->input('account');
+            $user    = User::where('username', $account)->orWhere('email', $account)->find(1);
+
+            if ($user === null) {
+                $message  = $this->messageBag('Can not found related account record');
+                $response = $this->fractal->item($message, new ErrorTransformer);
+                $response = $this->withError($response);
+            }else{
+                // Compare account is or not email to find out match column
+                $accountColumn = filter_var($request->input('account'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+                // Put find out column into request data
+                $request->merge([
+                    $accountColumn => $request->input('account')
+                ]);
+
+                if (Auth::attempt($request->only($accountColumn, 'password')) === false) {
+                    $message  = $this->messageBag('These account do not match our records');
+                    $response = $this->fractal->item($message, new ErrorTransformer);
+                    $response = $this->withError($response);
+                }else{
+                    $response = $this->fractal->item($user, new UserTransformer);
+                }
+            }
+        }
+
+        return $response;
+    }
+
 }
