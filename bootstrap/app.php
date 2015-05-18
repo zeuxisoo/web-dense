@@ -79,6 +79,7 @@ $app->routeMiddleware([
 */
 
 $app->register('App\Providers\FractalServiceProvider');
+$app->register('App\Providers\GravatarServiceProvider');
 
 /*
 |--------------------------------------------------------------------------

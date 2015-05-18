@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d61a38e0c5a014b19fcfec68d8c87ba0",
+    "hash": "f53083d696ac7362dff9b3b7544e4047",
     "packages": [
+        {
+            "name": "ballen/gravel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bobsta63/gravel.git",
+                "reference": "d8fd4418c20d519b06c8e28017d17a5147adfeec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bobsta63/gravel/zipball/d8fd4418c20d519b06c8e28017d17a5147adfeec",
+                "reference": "d8fd4418c20d519b06c8e28017d17a5147adfeec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ballen\\Gravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bobby Allen",
+                    "email": "ballen@bobbyallen.me",
+                    "homepage": "http://bobbyallen.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Gravel is a PHP library which provides easy access to get and display Gravatars.",
+            "homepage": "https://github.com/bobsta63/gravel",
+            "keywords": [
+                "avatar",
+                "gravatar"
+            ],
+            "time": "2014-02-24 10:19:26"
+        },
         {
             "name": "danielstjules/stringy",
             "version": "1.9.0",
@@ -3305,7 +3348,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ballen/gravel": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
