@@ -35,6 +35,10 @@ class UserController extends APIController {
             $response = $this->fractal->item($validator->errors(), new ValidationErrorTransformer);
             $response = $this->withError($response);
         }else{
+            $request->merge([
+                'password' => bcrypt($request->input('password'))
+            ]);
+
             $user     = User::create($request->only('username', 'email', 'password'));
             $response = $this->fractal->item($user, new UserTransformer);
         }
