@@ -15,4 +15,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $fillable = ['username', 'email', 'password'];
     protected $hidden   = ['password', 'remember_token'];
 
+    public function getAvatarAttribute() {
+        return app('gravatar')->setEmail($this->email)->setDefaultAvatar('mm')->buildGravatarUrl();
+    }
+
 }

@@ -16,6 +16,7 @@ class TopicTransformer extends TransformerAbstract {
             'id'      => $topic->id,
             'subject' => $topic->subject,
             'content' => $topic->content,
+            'status'  => $topic->status,
             'created_at' => $topic->created_at->toDateTimeString(),
             'updated_at' => $topic->updated_at->toDateTimeString(),
         ];

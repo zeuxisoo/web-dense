@@ -11,6 +11,12 @@ use App\Models\Topic;
 
 class TopicController extends APIController {
 
+    public function latest() {
+        $topics = Topic::with('user')->orderBy('created_at', 'desc')->paginate();
+
+        return $this->fractal->collection($topics, new TopicTransformer);
+    }
+
     public function create(Request $request) {
         $validator = Validator::make($request->all(), [
             'subject' => 'required',
