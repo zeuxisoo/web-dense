@@ -14,5 +14,6 @@
 $app->get('/', ['as' => 'home.index', 'uses' => 'App\Http\Controllers\HomeController@index']);
 
 $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers\Api'], function($app) {
+    $app->get('/user/status',  ['as' => 'api.user.status', 'uses' => 'UserController@status']);
     $app->post('/user/signup', ['as' => 'api.user.signup', 'uses' => 'UserController@signup']);
 });

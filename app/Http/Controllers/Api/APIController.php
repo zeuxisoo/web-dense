@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Response;
+use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Controller;
 
 class APIController extends Controller {
@@ -18,6 +19,13 @@ class APIController extends Controller {
 
     public function withError(Response $response) {
         return $this->withFailed($response);
+    }
+
+    public function messageBag($message) {
+        $messageBag = new MessageBag();
+        $messageBag->add('message', $message);
+
+        return $messageBag;
     }
 
 }

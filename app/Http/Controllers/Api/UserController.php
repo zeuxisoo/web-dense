@@ -1,13 +1,27 @@
 <?php
 namespace App\Http\Controllers\Api;
 
+use Auth;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Transformers\ErrorTransformer;
 use App\Transformers\ValidationErrorTransformer;
 use App\Transformers\UserTransformer;
 
 class UserController extends APIController {
+
+    public function status() {
+        if (Auth::check() === false) {
+            $message  = $this->messageBag('Please sign in first');
+            $response = $this->fractal->item($message, new ErrorTransformer);
+            $response = $this->withError($response);
+        }else{
+            $response = $this->fractal->item(Auth::user(), new UserTransformer);
+        }
+
+        return $response;
+    }
 
     public function signup(Request $request) {
         $validator = Validator::make($request->all(), [

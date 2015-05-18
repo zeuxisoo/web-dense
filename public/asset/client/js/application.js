@@ -58,9 +58,26 @@ denseApp.run([
             return app.validate.errorList === null;
         };
 
+        // Define global options
         $rootScope.validateTooltip = {
             validate: true,
         };
+
+        // Extra method
+        var bootstrap = function() {
+            app.restAPI.user.get({
+                action: 'status'
+            }, function(http) {
+                var user = http.data;
+
+                app.rootScope.global.user = user;
+                app.checkUser();
+            }, function(http) {
+                // If got error is not sign in, do nothing
+            });
+        }
+
+        bootstrap();
     }
 ]);
 
