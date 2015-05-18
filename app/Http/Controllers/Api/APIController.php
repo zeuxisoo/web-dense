@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Response;
 use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Controller;
+use App\Transformers\ErrorTransformer;
 
 class APIController extends Controller {
 
@@ -21,11 +22,14 @@ class APIController extends Controller {
         return $this->withFailed($response);
     }
 
-    public function messageBag($message) {
-        $messageBag = new MessageBag();
-        $messageBag->add('message', $message);
+    public function withErrorMessage($message) {
+        $messageBag = new MessageBag([
+            'message' => $message
+        ]);
 
-        return $messageBag;
+        $response = $this->fractal->item($messageBag, new ErrorTransformer);
+
+        return $this->withError($response);
     }
 
 }
