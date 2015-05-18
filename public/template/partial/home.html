@@ -1,7 +1,7 @@
 <div class="panel callout radius" ng-repeat="topic in topics">
     <div class="row topic">
         <div class="small-1 large-1 columns">
-            <img src="{{ topic.user.data.avatar }}" class="avatar" />
+            <img ng-src="{{ topic.user.data.avatar }}" class="avatar" />
         </div>
         <div class="small-11 large-11 columns">
             <h5 class="subject">
