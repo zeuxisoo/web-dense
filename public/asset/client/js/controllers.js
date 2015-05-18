@@ -101,7 +101,47 @@ denseApp.controller(
 );
 
 denseApp.controller(
-    'TopicController',
+    'TopicCreateController',
+    [
+        'app', '$scope',
+        function(app, $scope) {
+            if (app.rootScope.global.isSignIn === false) {
+                return app.location.search({}).path('/');
+            }else{
+                $scope.topic = {
+                    subject : '',
+                    content : '',
+                };
+
+                $scope.submit = function() {
+                    var topic = $scope.topic;
+
+                    if (app.validate($scope)) {
+                        app.restAPI.topic.save({
+                            'action': 'create'
+                        }, {
+                            subject: topic.subject,
+                            content: topic.content,
+                        }, function(http) {
+                            var topic = http.data;
+
+                            $scope.$destroy();
+                            app.location.search({}).path('/topic/show/' + topic.id);
+                        }, function(http) {
+                            var response = http.data,
+                                message  = response.data.message;
+
+                            app.toast.error(message);
+                        });
+                    }
+                }
+            }
+        }
+    ]
+);
+
+denseApp.controller(
+    'TopicShowController',
     [
         'app', '$scope',
         function(app, $scope) {

@@ -1,0 +1,27 @@
+<div class="panel callout radius">
+    <h4>Create Topic</h4>
+    <hr>
+    <form>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Subject
+                    <input type="text" placeholder="Subject" ng-model="topic.subject" dense-tooltip="validateTooltip" error-required="Please enter your subject" required />
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    Content
+                    <textarea placeholder="Content, You can keep the content empty if the subject can express a complete content" rows="10" ng-model="topic.content"></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <a href="#" class="button tiny" ng-click="submit()">Submit</a>
+            </div>
+        </div>
+    </form>
+</div>
