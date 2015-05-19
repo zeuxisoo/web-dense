@@ -1,5 +1,8 @@
 /lumen.log
 /vendor
+/node_modules
+
 .env
 composer.phar
 storage/*.sqlite
+public/asset/*
