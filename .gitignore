@@ -6,3 +6,4 @@
 composer.phar
 storage/*.sqlite
 public/asset/*
+public/template/*
