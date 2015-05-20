@@ -14,9 +14,10 @@
 $app->get('/', ['as' => 'home.index', 'uses' => 'App\Http\Controllers\HomeController@index']);
 
 $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers\Api'], function($app) {
-    $app->get('/user/status',  ['as' => 'api.user.status', 'uses' => 'UserController@status']);
-    $app->post('/user/signup', ['as' => 'api.user.signup', 'uses' => 'UserController@signup']);
-    $app->post('/user/signin', ['as' => 'api.user.signin', 'uses' => 'UserController@signin']);
+    $app->get('/user/status',   ['as' => 'api.user.status',  'uses' => 'UserController@status']);
+    $app->post('/user/signup',  ['as' => 'api.user.signup',  'uses' => 'UserController@signup']);
+    $app->post('/user/signin',  ['as' => 'api.user.signin',  'uses' => 'UserController@signin']);
+    $app->get('/user/signout',  ['as' => 'api.user.signout', 'uses' => 'UserController@signout']);
 
     $app->get('/topic/latest',  ['as' => 'api.topic.latest',   'uses' => 'TopicController@latest']);
     $app->post('/topic/create', ['as' => 'api.topic.create', 'uses' => 'TopicController@create', 'middleware' => 'auth']);

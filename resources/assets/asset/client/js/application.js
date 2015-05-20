@@ -63,6 +63,20 @@ denseApp.run([
             validate: true,
         };
 
+        $rootScope.signout = function() {
+            app.restAPI.user.get({
+                action: 'signout'
+            }, function(http) {
+                var response = http.data;
+
+                app.rootScope.global.user = null;
+                app.checkUser();
+                app.location.path('/');
+
+                app.toast.info(response.message);
+            });
+        };
+
         // Extra method
         var bootstrap = function() {
             app.restAPI.user.get({

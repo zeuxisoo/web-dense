@@ -3,7 +3,7 @@ namespace App\Transformers;
 
 use Illuminate\Support\MessageBag;
 
-class ValidationErrorTransformer extends ErrorTransformer {
+class ValidationErrorTransformer extends MessageBagTransformer {
 
     public function transform(MessageBag $bag) {
         return [

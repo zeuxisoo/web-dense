@@ -28,6 +28,7 @@
             <ul class="left">
                 <li><a href="/">Home</a></li>
                 <li ng-if="global.isSignIn"><a href="/topic/create">Create Topic</a></li>
+                <li ng-if="global.isSignIn"><a ng-click="signout()">Sign out</a></li>
                 <li ng-if="!global.isSignIn"><a href="/signin">Sign in</a></li>
                 <li ng-if="!global.isSignIn"><a href="/signup">Sign up</a></li>
             </ul>

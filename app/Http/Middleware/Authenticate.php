@@ -5,7 +5,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Routing\Middleware;
 use Illuminate\Support\MessageBag;
-use App\Transformers\ErrorTransformer;
+use App\Transformers\MessageBagTransformer;
 
 class Authenticate implements Middleware {
 
@@ -21,7 +21,7 @@ class Authenticate implements Middleware {
                 'message' => 'Please sign in first'
             ]);
 
-            return app('fractal')->item($messageBag, new ErrorTransformer)->setStatusCode(400);
+            return app('fractal')->item($messageBag, new MessageBagTransformer)->setStatusCode(400);
         }
 
         return $next($request);

@@ -78,4 +78,10 @@ class UserController extends APIController {
         return $response;
     }
 
+    public function signout() {
+        Auth::logout();
+
+        return $this->withSuccessMessage('Sign out Successful');
+    }
+
 }
