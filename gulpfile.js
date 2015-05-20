@@ -38,6 +38,8 @@ elixir.extend("siteIndex", function() {
             .pipe(gulp.dest('public/template'))
     });
 
+    this.registerWatcher('siteIndex', "resources/assets/template/index.html");
+
     return this.queueTask('siteIndex');
 });
 
