@@ -55,10 +55,22 @@
     <div class="panel post-comemnt">
         <span class="alert">Leave Comment? Please <a href="/signin">sign in</a> first.</span>
     </div>
-    <a href="#" class="button tiny success reset-button-margin">Sign in</a>
+    <a href="/signin" class="button tiny success reset-button-margin">Sign in</a>
 </div>
 
 <div class="panel callout radius" ng-if="global.isSignIn">
-    <textarea name="comment" rows="5"></textarea>
-    <a href="#" class="button tiny success reset-button-margin">Post comment</a>
+    <form>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>
+                    <textarea name="comment" rows="5" ng-model="comment.content" dense-tooltip="validateTooltip" error-required="Please enter your comment content" required></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <a href="#" class="button tiny success reset-button-margin" ng-click="submitComment()">Post comment</a>
+            </div>
+        </div>
+    </form>
 </div>

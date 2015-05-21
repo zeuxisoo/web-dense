@@ -160,6 +160,7 @@ denseApp.controller(
     [
         'app', '$scope', '$routeParams',
         function(app, $scope, $routeParams) {
+            // Fetch and show topic information
             app.restAPI.topic.get({
                 'action': 'show',
                 'id'    : $routeParams.id
@@ -172,7 +173,45 @@ denseApp.controller(
                     message  = response.data.message;
 
                 app.toast.error(message);
-            })
+            });
+
+            // Define variable
+            $scope.comment = {
+                content : '',
+            };
+
+            // Define method
+            $scope.submitComment = function() {
+                var comment = $scope.comment;
+
+                console.log(comment);
+
+                if (app.validate($scope)) {
+                    app.restAPI.comment.save({
+                        'action': 'create'
+                    }, {
+                        topic_id: $scope.topic.id,
+                        content : comment.content
+                    }, function(http) {
+                        var comment = http.data;
+
+                        if (comment) {
+                            app.toast.info('Comment created');
+                            clearCommentArea();
+                        }
+                    }, function(http) {
+                        var response = http.data,
+                            message  = response.data.message;
+
+                        app.toast.error(message);
+                    });
+                }
+            }
+
+            // Helper function
+            var clearCommentArea = function() {
+                $scope.comment.content = "";
+            }
         }
     ]
 );
