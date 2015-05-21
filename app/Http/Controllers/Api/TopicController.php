@@ -40,4 +40,14 @@ class TopicController extends APIController {
         return $response;
     }
 
+    public function show($id) {
+        $topic = Topic::find($id);
+
+        if ($topic === null) {
+            return $this->withErrorMessage('Can not found related topic');
+        }else{
+            return $this->fractal->item($topic, new TopicTransformer);
+        }
+    }
+
 }

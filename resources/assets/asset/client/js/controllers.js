@@ -158,9 +158,21 @@ denseApp.controller(
 denseApp.controller(
     'TopicShowController',
     [
-        'app', '$scope',
-        function(app, $scope) {
+        'app', '$scope', '$routeParams',
+        function(app, $scope, $routeParams) {
+            app.restAPI.topic.get({
+                'action': 'show',
+                'id'    : $routeParams.id
+            }, function(http) {
+                var topic = http.data;
 
+                $scope.topic = topic;
+            }, function(http) {
+                var response = http.data,
+                    message  = response.data.message;
+
+                app.toast.error(message);
+            })
         }
     ]
 );

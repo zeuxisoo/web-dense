@@ -19,6 +19,7 @@ $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers\Api'], func
     $app->post('/user/signin',  ['as' => 'api.user.signin',  'uses' => 'UserController@signin']);
     $app->get('/user/signout',  ['as' => 'api.user.signout', 'uses' => 'UserController@signout']);
 
-    $app->get('/topic/latest',  ['as' => 'api.topic.latest',   'uses' => 'TopicController@latest']);
-    $app->post('/topic/create', ['as' => 'api.topic.create', 'uses' => 'TopicController@create', 'middleware' => 'auth']);
+    $app->get('/topic/latest',    ['as' => 'api.topic.latest', 'uses' => 'TopicController@latest']);
+    $app->post('/topic/create',   ['as' => 'api.topic.create', 'uses' => 'TopicController@create', 'middleware' => 'auth']);
+    $app->get('/topic/show/{id}', ['as' => 'api.topic.show',   'uses' => 'TopicController@show']);
 });
