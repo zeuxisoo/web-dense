@@ -211,6 +211,7 @@ denseApp.controller(
                         var comment = http.data;
 
                         if (comment) {
+                            $scope.comments.push(comment);
                             app.toast.info('Comment created');
                             clearCommentArea();
                         }
