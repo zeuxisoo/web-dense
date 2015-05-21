@@ -10,7 +10,7 @@ denseApp.factory('restAPI', ['$resource', function($resource) {
     return {
         user   : $resource('/api/user/:action'),
         topic  : $resource('/api/topic/:action/:id'),
-        comment: $resource('/api/comment/:action'),
+        comment: $resource('/api/comment/:action/:topic_id'),
     }
 }]);
 

@@ -32,19 +32,19 @@
 </div>
 
 <div class="panel callout radius">
-    <div class="row comment">
+    <div class="row comment" ng-repeat="comment in comments">
         <div class="small-12 medium-1 large-1 columns hide-for-small-only">
-            <img src="http://placehold.it/48x48/59D/FFF&text=A" class="avatar" />
+            <img ng-src="{{ comment.user.data.avatar }}" class="avatar" />
         </div>
         <div class="small-12 medium-11 large-11 columns">
             <div class="panel block">
                 <div class="block-head">
-                    <span class="username">Username</span>
+                    <span class="username">{{ comment.user.data.username }}</span>
                     <span class="post-at">Post At</span>
-                    <span class="time">12 hours ago</span>
+                    <span class="time">{{ comment.created_at }}</span>
                 </div>
                 <div class="block-body">
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                    {{ comment.content }}
                 </div>
             </div>
         </div>

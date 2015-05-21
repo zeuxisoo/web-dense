@@ -41,4 +41,17 @@ class CommentController extends APIController {
         return $response;
     }
 
+    public function show($topic_id) {
+        $topic = Topic::find($topic_id);
+
+        if ($topic === null) {
+            $response  = $this->withErrorMessage('Can not found related topic');
+        }else{
+            $comments = Comment::whereTopicId($topic_id)->orderBy('created_at', 'asc')->get();
+            $response =  $this->fractal->collection($comments, new CommentTransformer);
+        }
+
+        return $response;
+    }
+
 }

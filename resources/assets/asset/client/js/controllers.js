@@ -175,6 +175,21 @@ denseApp.controller(
                 app.toast.error(message);
             });
 
+            // Fetch and show comments information
+            app.restAPI.comment.get({
+                'action'  : 'show',
+                'topic_id': $routeParams.id
+            }, function(http) {
+                var comments = http.data;
+
+                $scope.comments = comments;
+            }, function(http) {
+                var response = http.data,
+                    message  = response.data.message;
+
+                app.toast.error(message);
+            });
+
             // Define variable
             $scope.comment = {
                 content : '',
@@ -190,7 +205,7 @@ denseApp.controller(
                     app.restAPI.comment.save({
                         'action': 'create'
                     }, {
-                        topic_id: $scope.topic.id,
+                        topic_id: $routeParams.id,
                         content : comment.content
                     }, function(http) {
                         var comment = http.data;
