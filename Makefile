@@ -11,3 +11,6 @@ deps:
 
 server:
 	php artisan serve
+
+watch:
+	./node_modules/.bin/gulp watch
