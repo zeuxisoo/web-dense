@@ -70,6 +70,7 @@ elixir(function(mix) {
             'vendor/angular/angular.min.js',
             'vendor/angular/angular-route.min.js',
             'vendor/angular/angular-resource.min.js',
+            'vendor/angular/angular-sanitize.min.js',
             'vendor/angular-ui-utils/validate.js',
             'vendor/angular-moment/angular-moment.min.js',
             'vendor/foundation/js/foundation.min.js',

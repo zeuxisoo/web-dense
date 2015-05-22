@@ -50,6 +50,10 @@ body {
     color: #555555;
 }
 
+.share {
+    margin-top: 20px !important;
+}
+
 .comment .block {
     padding: 0px;
 }

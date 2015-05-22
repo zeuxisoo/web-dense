@@ -1,6 +1,7 @@
 var denseApp = angular.module('denseApp', [
     'ngRoute',
     'ngResource',
+    'ngSanitize',
     'ui.validate',
     'angularMoment'
 ]);

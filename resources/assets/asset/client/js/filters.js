@@ -14,3 +14,14 @@ denseApp.filter('length', ['utf8', 'JSONKit', function(utf8, JSONKit) {
         return utf8.stringToBytes(text).length;
     };
 }]);
+
+denseApp.filter('nl2br', function() {
+    return function(message, is_xhtml) {
+        console.log(message);
+        var is_xhtml = is_xhtml || true;
+        var breakTag = (is_xhtml) ? '<br />' : '<br>';
+        var message  = (message + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+
+        return message;
+    }
+});
