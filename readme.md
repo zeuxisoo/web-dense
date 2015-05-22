@@ -24,7 +24,15 @@ Migrations
 
     php artisan migrate
 
-Assets
+Gulp
+
+    npm install
+
+Build Assets
+
+    ./node_modules/.bin/gulp
+
+Watch Assets
 
     make watch
 
