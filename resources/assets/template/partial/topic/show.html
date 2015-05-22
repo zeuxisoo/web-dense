@@ -43,9 +43,7 @@
                     <span class="post-at">Post At</span>
                     <span class="time" am-time-ago="comment.created_at"></span>
                 </div>
-                <div class="block-body">
-                    {{ comment.content }}
-                </div>
+                <div class="block-body" ng-bind-html="comment.content | nl2br"></div>
             </div>
         </div>
     </div>
