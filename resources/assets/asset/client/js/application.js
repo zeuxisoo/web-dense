@@ -17,13 +17,14 @@ denseApp.config([
 ]);
 
 denseApp.run([
-    'app', 'restAPI', 'toast', '$filter', '$rootScope', '$location',
-    function(app, restAPI, toast, $filter, $rootScope, $location) {
-        app.restAPI   = restAPI;
-        app.toast     = toast;
-        app.filter    = $filter;
-        app.rootScope = $rootScope;
-        app.location  = $location;
+    'app', 'restAPI', 'toast', 'failedResponse', '$filter', '$rootScope', '$location',
+    function(app, restAPI, toast, failedResponse, $filter, $rootScope, $location) {
+        app.restAPI        = restAPI;
+        app.toast          = toast;
+        app.failedResponse = failedResponse;
+        app.filter         = $filter;
+        app.rootScope      = $rootScope;
+        app.location       = $location;
 
         // Add more utils to app object like app.each
         angular.extend(app, JSONKit);

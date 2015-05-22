@@ -37,3 +37,15 @@ denseApp.factory('toast', ['$log', 'JSONKit', function($log, JSONKit) {
 
     return toast;
 }]);
+
+denseApp.factory('failedResponse', ['app', function(app) {
+    return function(response) {
+        var message  = response.data.message;
+
+        if (message == null) {
+            message = "Unknown error";
+        }
+
+        app.toast.error(message);
+    }
+}]);

@@ -11,14 +11,7 @@ denseApp.controller(
                 $scope.topics     = http.data;
                 $scope.pagination = http.meta.pagination;
             }, function(http) {
-                var response = http.data,
-                    message  = response.data.message;
-
-                if (message == null) {
-                    message = "Unknown error";
-                }
-
-                app.toast.error(message);
+                app.failedResponse(http.data);
             })
         }
     ]
@@ -51,10 +44,7 @@ denseApp.controller(
                         $scope.$destroy();
                         app.location.path('/');
                     }, function(http) {
-                        var response = http.data,
-                            message  = response.data.message;
-
-                        app.toast.error(message);
+                        app.failedResponse(http.data);
                     });
                 }
             }
@@ -105,10 +95,7 @@ denseApp.controller(
                         $scope.$destroy();
                         app.location.path('/');
                     }, function(http) {
-                        var response = http.data,
-                            message  = response.data.message;
-
-                        app.toast.error(message);
+                        app.failedResponse(http.data);
                     });
                 }
             }
@@ -144,10 +131,7 @@ denseApp.controller(
                             $scope.$destroy();
                             app.location.search({}).path('/topic/show/' + topic.id);
                         }, function(http) {
-                            var response = http.data,
-                                message  = response.data.message;
-
-                            app.toast.error(message);
+                            app.failedResponse(http.data);
                         });
                     }
                 }
@@ -170,10 +154,7 @@ denseApp.controller(
 
                 $scope.topic = topic;
             }, function(http) {
-                var response = http.data,
-                    message  = response.data.message;
-
-                app.toast.error(message);
+                app.failedResponse(http.data);
             });
 
             // Fetch and show comments information
@@ -185,10 +166,7 @@ denseApp.controller(
 
                 $scope.comments = comments;
             }, function(http) {
-                var response = http.data,
-                    message  = response.data.message;
-
-                app.toast.error(message);
+                app.failedResponse(http.data);
             });
 
             // Define variable
@@ -217,10 +195,7 @@ denseApp.controller(
                             clearCommentArea();
                         }
                     }, function(http) {
-                        var response = http.data,
-                            message  = response.data.message;
-
-                        app.toast.error(message);
+                        app.failedResponse(http.data);
                     });
                 }
             }
@@ -246,15 +221,8 @@ denseApp.controller(
                 $scope.topics     = http.data;
                 $scope.pagination = http.meta.pagination;
             }, function(http) {
-                var response = http.data,
-                    message  = response.data.message;
-
-                if (message == null) {
-                    message = "Unknown error";
-                }
-
+                app.failedResponse(http.data);
                 app.location.search({}).path('/home');
-                app.toast.error(message);
             })
         }
     ]
