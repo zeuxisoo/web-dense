@@ -1,4 +1,8 @@
-<div class="panel callout radius" ng-repeat="topic in topics">
+<div class="panel callout radius text-center" ng-show="topics.length <= 0">
+    Dense has no topic during this period. Would you like to create it ?
+</div>
+
+<div class="panel callout radius" ng-repeat="topic in topics" ng-show="topics.length > 0">
     <div class="row topic">
         <div class="small-1 large-1 columns">
             <img ng-src="{{ topic.user.data.avatar }}" class="avatar" />
@@ -18,4 +22,4 @@
     </div>
 </div>
 
-<load-more current-page="{{ pagination.current_page }}" total-page="{{ pagination.total_pages }}" action="latest" ng-click="nextPage()" ng-disabled="pagination.current_page == pagination.total_pages" />
+<load-more current-page="{{ pagination.current_page }}" total-page="{{ pagination.total_pages }}" action="latest" ng-click="nextPage()" ng-disabled="pagination.current_page == pagination.total_pages" ng-show="topics.length > 0" />
