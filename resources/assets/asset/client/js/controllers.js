@@ -4,6 +4,10 @@ denseApp.controller(
         'app', '$scope',
         function(app, $scope) {
             $scope.topics = [];
+            $scope.pagination = {
+                current_page: 0,
+                total_pages : 0
+            }
 
             app.restAPI.topic.get({
                 'action': 'latest'

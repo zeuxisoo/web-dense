@@ -75,7 +75,9 @@ denseApp.directive('loadMore', ['app', '$routeParams', function(app, $routeParam
     return {
         restrict   : 'E',
         templateUrl: 'template/partial/directive/load-more.html',
-        controller : function($scope, $element, $attrs) {
+        link       : function (scope, element, attr, ctrl) {
+        },
+        controller : ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
             $scope.nextPage = function() {
                 var currentPage = $attrs.currentPage,
                     totalPage   = $attrs.totalPage,
@@ -112,6 +114,6 @@ denseApp.directive('loadMore', ['app', '$routeParams', function(app, $routeParam
                     $element.find("a.button").text("No more topics :(");
                 }
             }
-        }
+        }]
     }
 }]);
