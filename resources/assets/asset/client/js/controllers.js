@@ -8,7 +8,8 @@ denseApp.controller(
             app.restAPI.topic.get({
                 'action': 'latest'
             }, function(http) {
-                $scope.topics = http.data;
+                $scope.topics     = http.data;
+                $scope.pagination = http.meta.pagination;
             }, function(http) {
                 var response = http.data,
                     message  = response.data.message;

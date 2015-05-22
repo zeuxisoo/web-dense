@@ -18,6 +18,4 @@
     </div>
 </div>
 
-<div class="panel callout radius">
-    <a href="#" class="button expand">- Load more -</a>
-</div>
+<load-more current-page="{{ pagination.current_page }}" total-page="{{ pagination.total_pages }}" ng-click="nextPage()" ng-disabled="pagination.current_page == pagination.total_pages" />
