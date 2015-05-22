@@ -71,32 +71,43 @@ denseApp.directive('denseTooltip', ['$timeout', function($timeout) {
     }
 }]);
 
-denseApp.directive('loadMore', ['app', function(app) {
+denseApp.directive('loadMore', ['app', '$routeParams', function(app, $routeParams) {
     return {
         restrict   : 'E',
         templateUrl: 'template/partial/directive/load-more.html',
         controller : function($scope, $element, $attrs) {
             $scope.nextPage = function() {
                 var currentPage = $attrs.currentPage,
-                    totalPage   = $attrs.totalPage;
+                    totalPage   = $attrs.totalPage,
+                    action      = $attrs.action;
+
+                var parameters = {
+                    'action' : action,
+                    'page'   : parseInt(currentPage) + 1,
+                };
+
+                if (action === 'search') {
+                    parameters['keyword'] = $routeParams.keyword;
+                }
 
                 if (currentPage < totalPage) {
-                    app.restAPI.topic.get({
-                        'action': 'latest',
-                        'page'  : parseInt(currentPage) + 1
-                    }, function(http) {
-                        $scope.topics = $scope.topics.concat(http.data);
-                        $scope.pagination = http.meta.pagination;
-                    }, function(http) {
-                        var response = http.data,
-                            message  = response.data.message;
+                    app.restAPI.topic.get(
+                        parameters,
+                        function(http) {
+                            $scope.topics     = $scope.topics.concat(http.data);
+                            $scope.pagination = http.meta.pagination;
+                        },
+                        function(http) {
+                            var response = http.data,
+                                message  = response.data.message;
 
-                        if (message == null) {
-                            message = "Unknown error";
+                            if (message == null) {
+                                message = "Unknown error";
+                            }
+
+                            app.toast.error(message);
                         }
-
-                        app.toast.error(message);
-                    })
+                    )
                 }else{
                     $element.find("a.button").text("No more topics :(");
                 }

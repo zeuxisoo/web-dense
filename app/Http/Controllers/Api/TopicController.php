@@ -50,4 +50,21 @@ class TopicController extends APIController {
         }
     }
 
+    public function search(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'keyword' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response = $this->fractal->item($validator->errors(), new ValidationErrorTransformer);
+            $response = $this->withError($response);
+        }else{
+            $keyword  = $request->input('keyword');
+            $topics   = Topic::where('subject', 'LIKE', '%'.$keyword.'%')->paginate();
+            $response = $this->fractal->collection($topics, new TopicTransformer);
+        }
+
+        return $response;
+    }
+
 }

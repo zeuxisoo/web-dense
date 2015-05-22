@@ -77,6 +77,14 @@ denseApp.run([
             });
         };
 
+        $rootScope.search = function() {
+            var search = $rootScope.search;
+
+            app.location.search({
+                keyword: search.keyword
+            }).path('/search');
+        }
+
         // Extra method
         var bootstrap = function() {
             app.restAPI.user.get({

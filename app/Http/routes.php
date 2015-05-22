@@ -22,6 +22,7 @@ $app->group(['prefix' => 'api', 'namespace' => 'App\Http\Controllers\Api'], func
     $app->get('/topic/latest',    ['as' => 'api.topic.latest', 'uses' => 'TopicController@latest']);
     $app->post('/topic/create',   ['as' => 'api.topic.create', 'uses' => 'TopicController@create', 'middleware' => 'auth']);
     $app->get('/topic/show/{id}', ['as' => 'api.topic.show',   'uses' => 'TopicController@show']);
+    $app->get('/topic/search',    ['as' => 'api.topic.search', 'uses' => 'TopicController@search']);
 
     $app->post('/comment/create',         ['as' => 'api.comment.create', 'uses' => 'CommentController@create', 'middleware' => 'auth']);
     $app->get('/comment/show/{topic_id}', ['as' => 'api.comment.show',   'uses' => 'CommentController@show']);

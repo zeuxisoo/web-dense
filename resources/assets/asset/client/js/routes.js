@@ -22,6 +22,10 @@ denseApp.config([
                 templateUrl: 'template/partial/topic/show.html',
                 controller : 'TopicShowController',
             })
+            .when('/search', {
+                templateUrl: 'template/partial/search.html',
+                controller : 'SearchController',
+            })
             .otherwise({
                 redirectTo : '/'
             });

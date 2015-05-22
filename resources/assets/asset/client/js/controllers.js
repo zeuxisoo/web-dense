@@ -232,3 +232,30 @@ denseApp.controller(
         }
     ]
 );
+
+denseApp.controller(
+    'SearchController',
+    [
+        'app', '$scope', '$routeParams',
+        function(app, $scope, $routeParams) {
+            app.restAPI.topic.get({
+                'action' : 'search',
+                'keyword': $routeParams.keyword
+            }, function(http) {
+                $scope.keyword    = $routeParams.keyword,
+                $scope.topics     = http.data;
+                $scope.pagination = http.meta.pagination;
+            }, function(http) {
+                var response = http.data,
+                    message  = response.data.message;
+
+                if (message == null) {
+                    message = "Unknown error";
+                }
+
+                app.location.search({}).path('/home');
+                app.toast.error(message);
+            })
+        }
+    ]
+);
