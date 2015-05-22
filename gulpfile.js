@@ -66,10 +66,12 @@ elixir(function(mix) {
         .scripts([
             'vendor/foundation/js/vendor/modernizr.js',
             'vendor/foundation/js/vendor/jquery.js',
+            'vendor/monent/monent.js',
             'vendor/angular/angular.min.js',
             'vendor/angular/angular-route.min.js',
             'vendor/angular/angular-resource.min.js',
             'vendor/angular-ui-utils/validate.js',
+            'vendor/angular-moment/angular-moment.min.js',
             'vendor/foundation/js/foundation.min.js',
             'vendor/foundation/js/foundation/foundation.topbar.js',
             'vendor/toastr/toastr.min.js',

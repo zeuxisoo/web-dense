@@ -1,7 +1,8 @@
 var denseApp = angular.module('denseApp', [
     'ngRoute',
     'ngResource',
-    'ui.validate'
+    'ui.validate',
+    'angularMoment'
 ]);
 
 denseApp.constant('app', {
