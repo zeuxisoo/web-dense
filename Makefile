@@ -7,7 +7,7 @@ composer:
 	php -r "readfile('https://getcomposer.org/installer');" | php
 
 deps:
-	php composer.phar install
+	php composer.phar update
 
 server:
 	php artisan serve
